@@ -37,7 +37,21 @@ public class controlador implements ActionListener,MouseListener {
     
     public enum ClinicaAct{
         
-       entrar,
+       btnEntrar, //
+       btnCancelar, //
+       btnRegistro, //
+       btnInfo, //
+       btnRegistrar, //
+       btnAtras, //
+       btnListar, //
+       btnModificar, //
+       btnEliminar, //
+       btnAtras2, //
+       btnRecetar, //
+       tbPaciente, // 
+       
+       
+       
        
         
     }
@@ -45,7 +59,44 @@ public class controlador implements ActionListener,MouseListener {
     
     public void iniciar(){
         vista.setVisible(true);
-        //botones//
+        
+        this.vista.btnEntrar.setActionCommand("btnEntrar");
+        this.vista.btnEntrar.addActionListener(this);
+        
+        this.vista.btnCancelar.setActionCommand("btnCancelar");
+        this.vista.btnCancelar.addActionListener(this);
+        
+        this.vista.btnRegistro.setActionCommand("btnRegistro");
+        this.vista.btnRegistro.addActionListener(this);
+        
+        this.vista.btnInfo.setActionCommand("btnInfo");
+        this.vista.btnInfo.addActionListener(this);
+        
+        this.vista.btnRegistrar.setActionCommand("btnRegistrar");
+        this.vista.btnRegistrar.addActionListener(this);
+        
+        this.vista.btnAtras.setActionCommand("btnAtras");
+        this.vista.btnAtras.addActionListener(this);
+        
+        this.vista.btnListar.setActionCommand("btnListar");
+        this.vista.btnListar.addActionListener(this);
+        
+        this.vista.btnModificar.setActionCommand("btnModificar");
+        this.vista.btnModificar.addActionListener(this);
+        
+        this.vista.btnEliminar.setActionCommand("btnEliminar");
+        this.vista.btnEliminar.addActionListener(this);
+        
+        this.vista.btnAtras2.setActionCommand("btnAtras2");
+        this.vista.btnAtras2.addActionListener(this);
+        
+        this.vista.btnRecetar.setActionCommand("btnRecetar");
+        this.vista.btnRecetar.addActionListener(this);
+        
+        this.vista.tbPaciente.addMouseListener(this);
+        this.vista.tbPaciente.setName("tbPaciente");
+        
+        
             
             
           
@@ -54,13 +105,73 @@ public class controlador implements ActionListener,MouseListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         switch ( ClinicaAct.valueOf( e.getActionCommand() ) )
+                     {
+             case btnEntrar :
+            if(this.modelo.iniciarSesion(this.vista.txtNombre.getText(), this.vista.txtCrontaseña.getText())){
+           JOptionPane.showMessageDialog(null, "Los Datos son correctos");
+           this.vista.dispose();
+           this.vista.MenuMedico.setVisible(true);
+           
+           
+            }else{
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+            }
+           break;
+           
+             case btnCancelar :
+                 this.vista.dispose();
+                 
+                 break;
+                 
+             case btnRegistro :
+                 this.vista.dispose();
+                 this.vista.RegistroPaciente.setVisible(true);
+                 this.vista.txtRegistroNombre.setText("");
+                 this.vista.txtRegistroApellido.setText("");
+                 this.vista.txtRegistroDNI.setText("");
+                 this.vista.txtRegistroTelefono.setText("");
+                 this.vista.txtRegistroProblema.setText("");
+                 
+                 break;
+                    
+             case btnAtras :
+                 this.vista.RegistroPaciente.dispose();
+                 this.vista.setVisible(true);
+                 this.vista.txtNombre.setText("");
+                 this.vista.txtCrontaseña.setText("");
+                 
+                break;
+                
+             case btnInfo :
+                 
+                 break;
+                 
+             case btnRegistrar :
+                 
+                 this.modelo.añadirPaciente(this.vista.txtRegistroNombre.getText(), this.vista.txtRegistroApellido.getText(), Integer.parseInt(this.vista.txtRegistroTelefono.getText()), this.vista.txtRegistroProblema.getText());
+                 this.vista.RegistroPaciente.dispose();
+                 this.vista.txtNombre.setText("");
+                 this.vista.txtCrontaseña.setText("");
+                 
+                 break;
+             
+         }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        int fila;
+        switch (controlador.ClinicaAct.valueOf(e.getComponent().getName())){           
+        
+            case tbPaciente:
+             fila = this.vista.tbPaciente.rowAtPoint(e.getPoint());
+            if (fila > -1){                
+                this.vista.txtId.setText( String.valueOf( this.vista.tbPaciente.getValueAt(fila, 0) ));
+                }
+            break;
+      }
+        }
 
     @Override
     public void mousePressed(MouseEvent e) {
