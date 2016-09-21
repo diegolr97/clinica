@@ -40,7 +40,7 @@ public class controlador implements ActionListener,MouseListener {
        btnEntrar, // //
        btnCancelar, // //
        btnRegistro, // //
-       btnInfo, //                      falta para despues
+       btnInfo, // //                     falta para despues
        btnRegistrar, // //
        btnAtras, // //
        btnListar, // //  
@@ -51,6 +51,8 @@ public class controlador implements ActionListener,MouseListener {
        tbPaciente, // //
        btnModificar2, // //
        btnCancelar2, // //
+       tbInfo, // //
+       btnAtras3,
        
        
        
@@ -61,7 +63,8 @@ public class controlador implements ActionListener,MouseListener {
     
     
     public void iniciar(){
-        vista.setVisible(true);
+        this.vista.setVisible(true);
+        this.vista.setBounds(500, 200, 583, 389);
         
         this.vista.btnEntrar.setActionCommand("btnEntrar");
         this.vista.btnEntrar.addActionListener(this);
@@ -105,6 +108,14 @@ public class controlador implements ActionListener,MouseListener {
         this.vista.btnCancelar2.setActionCommand("btnCancelar2");
         this.vista.btnCancelar2.addActionListener(this);
         
+        this.vista.btnAtras3.setActionCommand("btnAtras3");
+        this.vista.btnAtras3.addActionListener(this);
+        
+        this.vista.tbInfo.addMouseListener(this);
+        this.vista.tbInfo.setName("tbInfo");
+        
+        
+        
             
             
           
@@ -120,6 +131,7 @@ public class controlador implements ActionListener,MouseListener {
            JOptionPane.showMessageDialog(null, "Los Datos son correctos");
            this.vista.dispose();
            this.vista.MenuMedico.setVisible(true);
+           this.vista.MenuMedico.setBounds(500, 200, 780, 509);
            this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
            
            
@@ -137,6 +149,7 @@ public class controlador implements ActionListener,MouseListener {
              case btnRegistro :
                  this.vista.dispose();
                  this.vista.RegistroPaciente.setVisible(true);
+                 this.vista.RegistroPaciente.setBounds(500, 200, 384, 489);
                  this.vista.txtRegistroNombre.setText("");
                  this.vista.txtRegistroApellido.setText("");
                  this.vista.txtRegistroDNI.setText("");
@@ -154,6 +167,14 @@ public class controlador implements ActionListener,MouseListener {
                 break;
                 
              case btnInfo :
+                 this.vista.InformacionCuentas.setVisible(true);
+                 this.vista.InformacionCuentas.setBounds(500, 200, 271, 197);
+                 this.vista.tbInfo.setModel(this.modelo.listarMedico());
+                 
+                 break;
+                 
+             case btnAtras3 :
+                 this.vista.InformacionCuentas.dispose();
                  
                  break;
                  
@@ -177,6 +198,7 @@ public class controlador implements ActionListener,MouseListener {
                  
              case btnModificar :
                  this.vista.ModificarPaciente.setVisible(true);
+                 this.vista.ModificarPaciente.setBounds(500, 200, 304, 280);
                  this.vista.txtModificarNombre.setText("");
                  this.vista.txtModificarApellido.setText("");
                  break;
@@ -195,6 +217,7 @@ public class controlador implements ActionListener,MouseListener {
              case btnAtras2 :
                  this.vista.MenuMedico.dispose();
                  this.vista.setVisible(true);
+                 this.vista.setBounds(500, 200, 583, 389);
                  this.vista.txtNombre.setText("");
                  this.vista.txtNombre.setText("");
                  break;
@@ -203,9 +226,7 @@ public class controlador implements ActionListener,MouseListener {
                  this.modelo.Recetar(this.vista.txtReceta.getText(), Integer.parseInt(this.vista.txtId.getText()));
                  this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
                  break;
-                 
-             
-             
+     
          }
     }
 

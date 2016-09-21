@@ -35,7 +35,6 @@ public class vista extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnAtras2 = new javax.swing.JButton();
-        btnInfo2 = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btnListar = new javax.swing.JButton();
@@ -66,6 +65,10 @@ public class vista extends javax.swing.JFrame {
         btnCancelar2 = new javax.swing.JButton();
         txtModificarNombre = new javax.swing.JTextField();
         txtModificarApellido = new javax.swing.JTextField();
+        InformacionCuentas = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbInfo = new javax.swing.JTable();
+        btnAtras3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -106,9 +109,6 @@ public class vista extends javax.swing.JFrame {
         btnAtras2.setText("ATRÁS");
         btnAtras2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        btnInfo2.setText("Info");
-        btnInfo2.setBorder(new javax.swing.border.MatteBorder(null));
-
         txtId.setEditable(false);
 
         jLabel5.setText("ID:");
@@ -142,19 +142,14 @@ public class vista extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnInfo2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
+                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -190,9 +185,7 @@ public class vista extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(txtReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(btnInfo2)
-                        .addContainerGap())))
+                        .addContainerGap(70, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout MenuMedicoLayout = new javax.swing.GroupLayout(MenuMedico.getContentPane());
@@ -407,6 +400,43 @@ public class vista extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        InformacionCuentas.setBackground(new java.awt.Color(204, 204, 255));
+
+        tbInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tbInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tbInfo);
+
+        btnAtras3.setText("Atrás");
+        btnAtras3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout InformacionCuentasLayout = new javax.swing.GroupLayout(InformacionCuentas.getContentPane());
+        InformacionCuentas.getContentPane().setLayout(InformacionCuentasLayout);
+        InformacionCuentasLayout.setHorizontalGroup(
+            InformacionCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(InformacionCuentasLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(btnAtras3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        InformacionCuentasLayout.setVerticalGroup(
+            InformacionCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InformacionCuentasLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(btnAtras3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -550,17 +580,18 @@ public class vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JDialog InformacionCuentas;
     public javax.swing.JDialog MenuMedico;
     public javax.swing.JDialog ModificarPaciente;
     public javax.swing.JDialog RegistroPaciente;
     public javax.swing.JButton btnAtras;
     public javax.swing.JButton btnAtras2;
+    public javax.swing.JButton btnAtras3;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnCancelar2;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnEntrar;
     public javax.swing.JButton btnInfo;
-    public javax.swing.JButton btnInfo2;
     public javax.swing.JButton btnListar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnModificar2;
@@ -586,7 +617,9 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JTable tbInfo;
     public javax.swing.JTable tbPaciente;
     public javax.swing.JPasswordField txtCrontaseña;
     public javax.swing.JTextField txtId;
