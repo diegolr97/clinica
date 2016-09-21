@@ -39,16 +39,19 @@ public class controlador implements ActionListener,MouseListener {
         
        btnEntrar, // //
        btnCancelar, // //
-       btnRegistro, //
-       btnInfo, //
-       btnRegistrar, //
-       btnAtras, //
-       btnListar, //
-       btnModificar, //
-       btnEliminar, //
-       btnAtras2, //
-       btnRecetar, //
-       tbPaciente, // 
+       btnRegistro, // //
+       btnInfo, //                      falta para despues
+       btnRegistrar, // //
+       btnAtras, // //
+       btnListar, // //  
+       btnModificar, // //
+       btnEliminar, // //
+       btnAtras2, // //
+       btnRecetar, //                    falta
+       tbPaciente, // //
+       btnModificar2, // //
+       btnCancelar2, // //
+       
        
        
        
@@ -96,6 +99,11 @@ public class controlador implements ActionListener,MouseListener {
         this.vista.tbPaciente.addMouseListener(this);
         this.vista.tbPaciente.setName("tbPaciente");
         
+        this.vista.btnModificar2.setActionCommand("btnModificar2");
+        this.vista.btnModificar2.addActionListener(this);
+        
+        this.vista.btnCancelar2.setActionCommand("btnCancelar2");
+        this.vista.btnCancelar2.addActionListener(this);
         
             
             
@@ -157,6 +165,45 @@ public class controlador implements ActionListener,MouseListener {
                  this.vista.txtCrontaseña.setText("");
                  
                  break;
+                 
+             case btnListar :
+                 this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 break;
+                 
+             case btnEliminar :
+                 this.modelo.EliminarPaciente(Integer.parseInt(this.vista.txtId.getText()));
+                 this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 break;
+                 
+             case btnModificar :
+                 this.vista.ModificarPaciente.setVisible(true);
+                 this.vista.txtModificarNombre.setText("");
+                 this.vista.txtModificarApellido.setText("");
+                 break;
+                 
+             case btnModificar2 :
+                 this.modelo.modificarPaciente(this.vista.txtModificarNombre.getText(), this.vista.txtModificarApellido.getText(), Integer.parseInt(this.vista.txtId.getText()));
+                 this.vista.ModificarPaciente.dispose();
+                 this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 break;
+                 
+             case btnCancelar2 :
+                 this.vista.ModificarPaciente.dispose();
+                 this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 break;
+                 
+             case btnAtras2 :
+                 this.vista.MenuMedico.dispose();
+                 this.vista.setVisible(true);
+                 this.vista.txtNombre.setText("");
+                 this.vista.txtNombre.setText("");
+                 break;
+                 
+             case btnRecetar :
+                 this.modelo.Recetar(this.vista.txtReceta.getText(), Integer.parseInt(this.vista.txtId.getText()));
+                 this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 
+             
              
          }
     }
