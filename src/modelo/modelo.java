@@ -92,7 +92,7 @@ public class modelo extends database {
    public boolean añadirPaciente(String Nombre, String Apellido, int Telefono, int dni, String Problema)
     {
         String q=" INSERT INTO paciente ( Nombre , Apellido, DNI, Telefono, Problema, Receta ) "
-                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + dni+ "', '" + Telefono + "', '" + Problema + "', 'Nada Especificado' ) ";
+                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + dni + "', '" + Telefono + "', '" + Problema + "', 'Nada Especificado' ) ";
             //se ejecuta la consulta
             try {
                 PreparedStatement pstm = this.getdatabase().prepareStatement(q);
@@ -154,7 +154,7 @@ public class modelo extends database {
               JOptionPane.showMessageDialog(null, "Operación Realizada");
               
           }catch(SQLException e){
-              JOptionPane.showInputDialog(null, "Error de los datosm Vuelva a Escribirlos");
+              JOptionPane.showInputDialog(null, "Error de los datos Vuelva a Escribirlos");
               System.out.println( e.getMessage() );
           }
       }

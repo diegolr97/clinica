@@ -202,6 +202,7 @@ public class controlador implements ActionListener,MouseListener {
              case btnRecetar :
                  this.modelo.Recetar(this.vista.txtReceta.getText(), Integer.parseInt(this.vista.txtId.getText()));
                  this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 break;
                  
              
              
