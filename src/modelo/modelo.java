@@ -129,7 +129,7 @@ public class modelo extends database {
     }
    public boolean añadirPaciente(String Nombre, String Apellido, String Problema)
     {
-        String q=" INSERT INTO paciente ( Nombre , Apellido, DNI, Telefono, Problema, Receta ) "
+        String q=" INSERT INTO paciente ( Nombre , Apellido, Problema, Receta ) "
                     + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + Problema + "', 'Nada Especificado' ) ";
             //se ejecuta la consulta
             try {

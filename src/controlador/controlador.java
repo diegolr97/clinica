@@ -64,7 +64,7 @@ public class controlador implements ActionListener,MouseListener {
     
     public void iniciar(){
         this.vista.setVisible(true);
-        this.vista.setBounds(500, 200, 583, 389);
+        this.vista.setBounds(500, 200, 583, 422);
         
         this.vista.btnEntrar.setActionCommand("btnEntrar");
         this.vista.btnEntrar.addActionListener(this);
@@ -132,6 +132,8 @@ public class controlador implements ActionListener,MouseListener {
            this.vista.dispose();
            this.vista.MenuMedico.setVisible(true);
            this.vista.MenuMedico.setBounds(500, 200, 780, 509);
+           this.vista.txtId.setText("");
+           this.vista.txtReceta.setText("");
            this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
            
            
@@ -152,8 +154,7 @@ public class controlador implements ActionListener,MouseListener {
                  this.vista.RegistroPaciente.setBounds(500, 200, 384, 489);
                  this.vista.txtRegistroNombre.setText("");
                  this.vista.txtRegistroApellido.setText("");
-                 this.vista.txtRegistroDNI.setText("");
-                 this.vista.txtRegistroTelefono.setText("");
+                 
                  this.vista.txtRegistroProblema.setText("");
                  
                  break;
@@ -217,9 +218,9 @@ public class controlador implements ActionListener,MouseListener {
              case btnAtras2 :
                  this.vista.MenuMedico.dispose();
                  this.vista.setVisible(true);
-                 this.vista.setBounds(500, 200, 583, 389);
+                 this.vista.setBounds(500, 200, 583, 422);
                  this.vista.txtNombre.setText("");
-                 this.vista.txtNombre.setText("");
+                 this.vista.txtCrontaseña.setText("");
                  break;
                  
              case btnRecetar :
@@ -246,23 +247,16 @@ public class controlador implements ActionListener,MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+        }
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+        }
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+        }
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        }
     
     
     

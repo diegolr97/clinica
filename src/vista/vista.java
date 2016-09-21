@@ -45,13 +45,9 @@ public class vista extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtRegistroNombre = new javax.swing.JTextField();
         txtRegistroApellido = new javax.swing.JTextField();
-        txtRegistroDNI = new javax.swing.JTextField();
-        txtRegistroTelefono = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtRegistroProblema = new javax.swing.JTextArea();
         btnRegistrar = new javax.swing.JButton();
@@ -209,10 +205,6 @@ public class vista extends javax.swing.JFrame {
 
         jLabel10.setText("Apellidos:");
 
-        jLabel11.setText("DNI:");
-
-        jLabel12.setText("Teléfono:");
-
         jLabel13.setText("Describe el problema que padeces:");
 
         txtRegistroNombre.setBorder(new javax.swing.border.MatteBorder(null));
@@ -223,15 +215,6 @@ public class vista extends javax.swing.JFrame {
                 txtRegistroApellidoActionPerformed(evt);
             }
         });
-
-        txtRegistroDNI.setBorder(new javax.swing.border.MatteBorder(null));
-        txtRegistroDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRegistroDNIActionPerformed(evt);
-            }
-        });
-
-        txtRegistroTelefono.setBorder(new javax.swing.border.MatteBorder(null));
 
         txtRegistroProblema.setColumns(20);
         txtRegistroProblema.setRows(5);
@@ -258,14 +241,6 @@ public class vista extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                             .addGap(33, 33, 33)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel12))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtRegistroDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                                        .addComponent(txtRegistroTelefono)))
                                 .addComponent(jLabel13)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,15 +270,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtRegistroApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtRegistroDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtRegistroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(138, 138, 138)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -536,10 +503,6 @@ public class vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtRegistroDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistroDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRegistroDNIActionPerformed
-
     private void txtRegistroApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistroApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRegistroApellidoActionPerformed
@@ -600,8 +563,6 @@ public class vista extends javax.swing.JFrame {
     public javax.swing.JButton btnRegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -628,9 +589,7 @@ public class vista extends javax.swing.JFrame {
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtReceta;
     public javax.swing.JTextField txtRegistroApellido;
-    public javax.swing.JTextField txtRegistroDNI;
     public javax.swing.JTextField txtRegistroNombre;
     public javax.swing.JTextArea txtRegistroProblema;
-    public javax.swing.JTextField txtRegistroTelefono;
     // End of variables declaration//GEN-END:variables
 }
