@@ -24,7 +24,7 @@ public class modelo extends database {
         boolean comp= false;
         
         try {
-            String q = "SELECT * FROM Medicos ";
+            String q = "SELECT * FROM medico ";
             PreparedStatement pstm = this.getdatabase().prepareStatement(q);
             ResultSet res = pstm.executeQuery();
             
@@ -47,10 +47,52 @@ public class modelo extends database {
         } 
         return comp;
     }
-   public boolean añadirPaciente(String Nombre, String Apellido, int Telefono, String Problema)
+    
+    public DefaultTableModel listarPaciente()
     {
-        String q=" INSERT INTO Paciente ( Nombre , Apellido, DNI, Telefono, Problema ) "
-                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + Telefono + "', '" + Problema + "' ) ";
+      DefaultTableModel tablemodel = new DefaultTableModel();
+      int registros = 0;
+      String[] columNames = {"idPaciente", "Nombre", "Apellido", "Problema", "Receta"};
+      //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
+      //para formar la matriz de datos
+      try{
+         PreparedStatement pstm = this.getdatabase().prepareStatement( "SELECT count(*) as todo FROM paciente");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registros = res.getInt("todo");
+         res.close();
+      }catch(SQLException e){
+         System.err.println( e.getMessage() );
+      }
+    //se crea una matriz con tantas filas y columnas que necesite
+    Object[][] data = new String[registros][6];
+      try{
+          //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
+         PreparedStatement pstm = this.getdatabase().prepareStatement("SELECT * FROM paciente");
+         ResultSet res = pstm.executeQuery();
+         int i=0;
+         while(res.next()){
+                
+                data[i][0] = res.getString( "idPaciente" );
+                data[i][1] = res.getString( "Nombre");
+                data[i][2] = res.getString( "Apellido");
+                data[i][3] = res.getString( "Problema");
+                data[i][4] = res.getString( "Receta");
+                    
+            i++;
+         }
+         res.close();
+         //se añade la matriz de datos en el DefaultTableModel
+         tablemodel.setDataVector(data, columNames );
+         }catch(SQLException e){
+            System.err.println( e.getMessage() );
+        }
+        return tablemodel;
+    }
+   public boolean añadirPaciente(String Nombre, String Apellido, int Telefono, int dni, String Problema)
+    {
+        String q=" INSERT INTO paciente ( Nombre , Apellido, DNI, Telefono, Problema, Receta ) "
+                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + dni+ "', '" + Telefono + "', '" + Problema + "', 'Nada Especificado' ) ";
             //se ejecuta la consulta
             try {
                 PreparedStatement pstm = this.getdatabase().prepareStatement(q);
@@ -64,11 +106,13 @@ public class modelo extends database {
         
         
     }
+   
+   
    public boolean EliminarPaciente(int cod)
     {
          boolean res=false;
         //se arma la consulta
-        String q = " DELETE FROM Paciente WHERE  idPaciente='" + cod + "' " ;
+        String q = " DELETE FROM paciente WHERE  idPaciente='" + cod + "' " ;
         //se ejecuta la consulta
          try {
             PreparedStatement pstm = this.getdatabase().prepareStatement(q);
@@ -83,9 +127,9 @@ public class modelo extends database {
         
         
     }
-   public void modificarPaciente (String Nombre, String Apellido, int Telefono){
+   public void modificarPaciente (String Nombre, String Apellido, int cod){
           
-          String q ="update Paciente set Nombre ='"+Nombre+"', Apellido ='"+Apellido+"', Telefono ='"+Telefono+"' ";
+          String q ="update paciente set Nombre ='"+Nombre+"', Apellido ='"+Apellido+"' where idPaciente='"+cod+"' ";
           
           try{
               PreparedStatement pstm = this.getdatabase().prepareStatement(q);
@@ -94,7 +138,23 @@ public class modelo extends database {
               JOptionPane.showMessageDialog(null, "Operación Realizada");
               
           }catch(SQLException e){
-              JOptionPane.showInputDialog(null, "Error de los datos son incorrectos. \nReviselos y vuelva a intentarlo");
+              JOptionPane.showInputDialog(null, "Error de los datos, vuelva a escribirlos");
+              System.out.println( e.getMessage() );
+          }
+      }
+   
+   public void Recetar(String Receta,int cod){
+          
+          String q ="update paciente set Receta ='"+Receta+"' where idPaciente='"+cod+"' ";
+          
+          try{
+              PreparedStatement pstm = this.getdatabase().prepareStatement(q);
+              pstm.execute();
+              pstm.close();
+              JOptionPane.showMessageDialog(null, "Operación Realizada");
+              
+          }catch(SQLException e){
+              JOptionPane.showInputDialog(null, "Error de los datosm Vuelva a Escribirlos");
               System.out.println( e.getMessage() );
           }
       }

@@ -37,8 +37,8 @@ public class controlador implements ActionListener,MouseListener {
     
     public enum ClinicaAct{
         
-       btnEntrar, //
-       btnCancelar, //
+       btnEntrar, // //
+       btnCancelar, // //
        btnRegistro, //
        btnInfo, //
        btnRegistrar, //
@@ -112,6 +112,8 @@ public class controlador implements ActionListener,MouseListener {
            JOptionPane.showMessageDialog(null, "Los Datos son correctos");
            this.vista.dispose();
            this.vista.MenuMedico.setVisible(true);
+           this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+           
            
            
             }else{
@@ -148,9 +150,9 @@ public class controlador implements ActionListener,MouseListener {
                  break;
                  
              case btnRegistrar :
-                 
-                 this.modelo.añadirPaciente(this.vista.txtRegistroNombre.getText(), this.vista.txtRegistroApellido.getText(), Integer.parseInt(this.vista.txtRegistroTelefono.getText()), this.vista.txtRegistroProblema.getText());
+                 this.modelo.añadirPaciente(this.vista.txtRegistroNombre.getText(), this.vista.txtRegistroApellido.getText(), Integer.parseInt(this.vista.txtRegistroTelefono.getText()), Integer.parseInt(this.vista.txtRegistroDNI.getText()), this.vista.txtRegistroProblema.getText());
                  this.vista.RegistroPaciente.dispose();
+                 this.vista.setVisible(true);
                  this.vista.txtNombre.setText("");
                  this.vista.txtCrontaseña.setText("");
                  
