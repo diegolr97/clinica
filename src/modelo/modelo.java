@@ -52,7 +52,7 @@ public class modelo extends database {
     {
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
-      String[] columNames = {"idPaciente", "Nombre", "Apellido", "Problema", "Receta"};
+      String[] columNames = {"idPaciente", "Nombre", "Apellido", "Problema", "Receta", "Estado"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
@@ -65,7 +65,7 @@ public class modelo extends database {
          System.err.println( e.getMessage() );
       }
     //se crea una matriz con tantas filas y columnas que necesite
-    Object[][] data = new String[registros][6];
+    Object[][] data = new String[registros][7];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
          PreparedStatement pstm = this.getdatabase().prepareStatement("SELECT * FROM paciente");
@@ -78,6 +78,7 @@ public class modelo extends database {
                 data[i][2] = res.getString( "Apellido");
                 data[i][3] = res.getString( "Problema");
                 data[i][4] = res.getString( "Receta");
+                data[i][5] = res.getString( "Estado");
                     
             i++;
          }
@@ -129,8 +130,8 @@ public class modelo extends database {
     }
    public boolean añadirPaciente(String Nombre, String Apellido, String Problema)
     {
-        String q=" INSERT INTO paciente ( Nombre , Apellido, Problema, Receta ) "
-                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + Problema + "', 'Nada Especificado' ) ";
+        String q=" INSERT INTO paciente ( Nombre , Apellido, Problema, Receta, Estado ) "
+                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + Problema + "', 'Nada Especificado', 'Cita Previa' ) ";
             //se ejecuta la consulta
             try {
                 PreparedStatement pstm = this.getdatabase().prepareStatement(q);
@@ -184,11 +185,15 @@ public class modelo extends database {
    public void Recetar(String Receta,int cod){
           
           String q ="update paciente set Receta ='"+Receta+"' where idPaciente='"+cod+"' ";
+          String w ="update paciente set Estado ='cita realizada'";
           
           try{
               PreparedStatement pstm = this.getdatabase().prepareStatement(q);
+              PreparedStatement pstm1 = this.getdatabase().prepareStatement(w);
               pstm.execute();
+              pstm1.execute();
               pstm.close();
+              pstm1.close();
               JOptionPane.showMessageDialog(null, "Operación Realizada");
               
           }catch(SQLException e){
@@ -196,6 +201,10 @@ public class modelo extends database {
               System.out.println( e.getMessage() );
           }
       }
+   
+   
+       
+   
 
     
 }
