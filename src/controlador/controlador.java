@@ -158,7 +158,7 @@ public class controlador implements ActionListener,MouseListener {
                  break;
                  
              case btnRegistrar :
-                 this.modelo.añadirPaciente(this.vista.txtRegistroNombre.getText(), this.vista.txtRegistroApellido.getText(), Integer.parseInt(this.vista.txtRegistroTelefono.getText()), Integer.parseInt(this.vista.txtRegistroDNI.getText()), this.vista.txtRegistroProblema.getText());
+                 this.modelo.añadirPaciente(this.vista.txtRegistroNombre.getText(), this.vista.txtRegistroApellido.getText(), this.vista.txtRegistroProblema.getText());
                  this.vista.RegistroPaciente.dispose();
                  this.vista.setVisible(true);
                  this.vista.txtNombre.setText("");

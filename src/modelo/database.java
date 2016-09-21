@@ -12,16 +12,16 @@ import java.sql.*;
  */
 public class database {
     
-    private static String  host = "192.168.28.3";  
-    private String db = "clinica";
-    private String user = "dam20";
-    private String password = "salesianas";
+    private static String  host = "localhost";  
+    private String db = "clinicadondiego";
+    private String user = "root";
+    private String password = "";
     private String url = "jdbc:mysql://"+host+"/"+db;
     private Connection conn = null;
 
    /** Constructor de clase */
    public database(){
-        this.url = "jdbc:mysql://192.168.28.3/"+this.db;
+        this.url = "jdbc:mysql://localhost/"+this.db;
        try{
          //obtenemos el driver de para mysql
          Class.forName("com.mysql.jdbc.Driver");

@@ -89,10 +89,10 @@ public class modelo extends database {
         }
         return tablemodel;
     }
-   public boolean añadirPaciente(String Nombre, String Apellido, int Telefono, int dni, String Problema)
+   public boolean añadirPaciente(String Nombre, String Apellido, String Problema)
     {
         String q=" INSERT INTO paciente ( Nombre , Apellido, DNI, Telefono, Problema, Receta ) "
-                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + dni + "', '" + Telefono + "', '" + Problema + "', 'Nada Especificado' ) ";
+                    + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + Problema + "', 'Nada Especificado' ) ";
             //se ejecuta la consulta
             try {
                 PreparedStatement pstm = this.getdatabase().prepareStatement(q);
