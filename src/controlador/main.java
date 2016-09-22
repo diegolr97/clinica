@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 import vista.vista;
 
 /**
  *
- * @author Usuario
+ * @author Diego Lucas Romero
+ * @version 22/09/2016 17:01, Diego Lucas Romero
+ */
+
+/**
+ * Arrancas la vista desde main con el metodo iniciar
+ * en el controlador
  */
 public class main {
     public static void main(String[] args) {

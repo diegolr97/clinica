@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -17,42 +13,54 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+// Se importa modelo e interfaz
 import vista.vista;
 import modelo.modelo;
 
 /**
  *
- * @author Usuario
+ * @author Diego
+ * @version 22/09/2016 17:01, Diego Lucas Romero
  */
 public class controlador implements ActionListener,MouseListener {
+    /**instancia a nuestra interfaz*/
     vista vista;
+    /** instancia a nuestro modelo */
     modelo modelo = new modelo();
     
     
+    /** Constrcutor de clase
+     * @param vista Instancia de clase interfaz
+     */
     public controlador( vista vista ){
         this.vista = vista;
         
         
     }
+    /** Se declaran en un ENUM las acciones que se realizan desde la
+     * interfaz de usuario VISTA y posterior ejecución desde el controlador.
+     * Ponemos los nombres de los botones y las tablas que vamos a utilizar
+     * en este programa 
+     */
     
     public enum ClinicaAct{
         
        btnEntrar, // //
        btnCancelar, // //
        btnRegistro, // //
-       btnInfo, // //                     falta para despues
+       btnInfo, // //                     
        btnRegistrar, // //
        btnAtras, // //
        btnListar, // //  
        btnModificar, // //
        btnEliminar, // //
        btnAtras2, // //
-       btnRecetar, //                    falta
+       btnRecetar, //                    
        tbPaciente, // //
        btnModificar2, // //
        btnCancelar2, // //
        tbInfo, // //
-       btnAtras3,
+       btnAtras3, // //
        
        
        
@@ -61,8 +69,9 @@ public class controlador implements ActionListener,MouseListener {
         
     }
     
-    
+    /** Inicia el skin y las diferentes variables que se utilizan */
     public void iniciar(){
+        // Skin tipo WINDOWS
         this.vista.setVisible(true);
         this.vista.setBounds(500, 200, 583, 422);
         
@@ -123,6 +132,10 @@ public class controlador implements ActionListener,MouseListener {
        }
 
     @Override
+    /**
+     * Action Performed importado donde al hacer click en cualquier caso implementa una accion, cada unos de loa
+     * botones creado anteriormente tiene un enum, el cual hemos llamado igual para no liarnos
+     */
     public void actionPerformed(ActionEvent e) {
          switch ( ClinicaAct.valueOf( e.getActionCommand() ) )
                      {
@@ -195,6 +208,7 @@ public class controlador implements ActionListener,MouseListener {
              case btnEliminar :
                  this.modelo.EliminarPaciente(Integer.parseInt(this.vista.txtId.getText()));
                  this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 this.vista.txtId.setText("");
                  break;
                  
              case btnModificar :
@@ -208,11 +222,13 @@ public class controlador implements ActionListener,MouseListener {
                  this.modelo.modificarPaciente(this.vista.txtModificarNombre.getText(), this.vista.txtModificarApellido.getText(), Integer.parseInt(this.vista.txtId.getText()));
                  this.vista.ModificarPaciente.dispose();
                  this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 this.vista.txtId.setText("");
                  break;
                  
              case btnCancelar2 :
                  this.vista.ModificarPaciente.dispose();
                  this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 this.vista.txtId.setText("");
                  break;
                  
              case btnAtras2 :
@@ -226,11 +242,13 @@ public class controlador implements ActionListener,MouseListener {
              case btnRecetar :
                  this.modelo.Recetar(this.vista.txtReceta.getText(), Integer.parseInt(this.vista.txtId.getText()));
                  this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
+                 this.vista.txtId.setText("");
+                 this.vista.txtReceta.setText("");
                  break;
      
          }
     }
-
+      //Eventos que suceden por el mouse
     @Override
     public void mouseClicked(MouseEvent e) {
         int fila;

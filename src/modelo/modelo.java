@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -10,19 +6,28 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Usuario
+ * @author Diego Lucas Romero
+ * @version 22/09/2016 17:01, Diego Lucas Romero
  */
 public class modelo extends database {
+    
+    /** Constructor de clase */
     
     public modelo(){
         
     }
-    
+    /**
+     * Metodo para iniciar sesion y saber segun el select y las variables contraseña y nombre si es correcto
+     * el dato introducido
+     * @param Nombre
+     * @param Contraseña
+     * @return comp
+     */
     public boolean iniciarSesion(String Nombre, String Contraseña) {
        String nombre= "";
         String contraseña = "";
         boolean comp= false;
-        
+        //consulta sql
         try {
             String q = "SELECT * FROM medico ";
             PreparedStatement pstm = this.getdatabase().prepareStatement(q);
@@ -30,9 +35,11 @@ public class modelo extends database {
             
             
             while (res.next()) {
-                
+                //recorre uno a uno el Nombre y la Contraseña de cada Medico
                 nombre = res.getString("Nombre");
                 contraseña = res.getString("Contraseña");
+                //Si coincide los datos puesto con los datos de la base de datos
+                //puedes entrar al menu
                 
                  if(nombre.equals(Nombre) && contraseña.equals(Contraseña) ){
               
@@ -47,6 +54,12 @@ public class modelo extends database {
         } 
         return comp;
     }
+    
+    /**
+     * Metodo para listar los Pacientes que se creen una vez registrado, especificando 
+     * el nombre de las columnas y lo select especifico para sacar los datos deseados
+     * @return tablemodel
+     */
     
     public DefaultTableModel listarPaciente()
     {
@@ -89,7 +102,13 @@ public class modelo extends database {
             System.err.println( e.getMessage() );
         }
         return tablemodel;
+        
     }
+    /**
+     * Metodo para listar los Medicos que se creen una vez registrado, especificando 
+     * el nombre de las columnas y lo select especifico para sacar los datos deseados
+     * @return tablemodel
+     */
     public DefaultTableModel listarMedico()
     {
       DefaultTableModel tablemodel = new DefaultTableModel();
@@ -128,8 +147,17 @@ public class modelo extends database {
         }
         return tablemodel;
     }
+    /**
+     * Metodo para añadir los pacientes una vez registrados, especificando el nombre, apellido,
+     * problema
+     * @param Nombre
+     * @param Apellido
+     * @param Problema
+     * @return false
+     */
    public boolean añadirPaciente(String Nombre, String Apellido, String Problema)
     {
+        //consulta sql
         String q=" INSERT INTO paciente ( Nombre , Apellido, Problema, Receta, Estado ) "
                     + "VALUES ('" + Nombre + "', '" + Apellido + "', '" + Problema + "', 'Nada Especificado', 'Cita Previa' ) ";
             //se ejecuta la consulta
@@ -145,7 +173,12 @@ public class modelo extends database {
         
         
     }
-   
+   /**
+     * Metodo para Eliminar los pacientes una vez ya registrados, sabiendo la id del paciente
+     * que es el la clave primaria
+     * @param cod
+     * @return res
+     */
    
    public boolean EliminarPaciente(int cod)
     {
@@ -166,10 +199,17 @@ public class modelo extends database {
         
         
     }
+   /**
+     * Metodo para Modificar los pacientes una vez ya registrados, sabiendo la id del paciente
+     * que es el la clave primaria
+     * @param Nombre
+     * @param Apellido
+     * @param cod
+     */
    public void modificarPaciente (String Nombre, String Apellido, int cod){
-          
+          //consulta sql
           String q ="update paciente set Nombre ='"+Nombre+"', Apellido ='"+Apellido+"' where idPaciente='"+cod+"' ";
-          
+          //se ejecuta la consulta
           try{
               PreparedStatement pstm = this.getdatabase().prepareStatement(q);
               pstm.execute();
@@ -181,12 +221,19 @@ public class modelo extends database {
               System.out.println( e.getMessage() );
           }
       }
+   /**
+     * Metodo para Recetar los pacientes una vez ya registrados, sabiendo la id del paciente
+     * que es el la clave primaria
+     * @param Receta
+     * @param cod
+     * @return res
+     */
    
    public void Recetar(String Receta,int cod){
-          
+          //consulta sql
           String q ="update paciente set Receta ='"+Receta+"' where idPaciente='"+cod+"' ";
           String w ="update paciente set Estado ='cita realizada'";
-          
+          //se ejecutra la consulta sql
           try{
               PreparedStatement pstm = this.getdatabase().prepareStatement(q);
               PreparedStatement pstm1 = this.getdatabase().prepareStatement(w);
