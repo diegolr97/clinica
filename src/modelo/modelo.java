@@ -232,15 +232,15 @@ public class modelo extends database {
    public void Recetar(String Receta,int cod){
           //consulta sql
           String q ="update paciente set Receta ='"+Receta+"' where idPaciente='"+cod+"' ";
-          String w ="update paciente set Estado ='cita realizada'";
+          String w ="update paciente set Estado ='cita realizada' where idPaciente='"+cod+"' ";
           //se ejecutra la consulta sql
           try{
               PreparedStatement pstm = this.getdatabase().prepareStatement(q);
               PreparedStatement pstm1 = this.getdatabase().prepareStatement(w);
               pstm.execute();
               pstm1.execute();
-              pstm.close();
               pstm1.close();
+              pstm.close();
               JOptionPane.showMessageDialog(null, "Operación Realizada");
               
           }catch(SQLException e){

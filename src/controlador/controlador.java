@@ -141,10 +141,11 @@ public class controlador implements ActionListener,MouseListener {
                      {
              case btnEntrar :
             if(this.modelo.iniciarSesion(this.vista.txtNombre.getText(), this.vista.txtCrontaseña.getText())){
-           JOptionPane.showMessageDialog(null, "Los Datos son correctos");
+           JOptionPane.showMessageDialog(null, "Los Datos son correctos, Bienvenido "+this.vista.txtNombre.getText()+"");
            this.vista.dispose();
            this.vista.MenuMedico.setVisible(true);
            this.vista.MenuMedico.setBounds(500, 200, 780, 509);
+           this.vista.txtMedico.setText(this.vista.txtNombre.getText());
            this.vista.txtId.setText("");
            this.vista.txtReceta.setText("");
            this.vista.tbPaciente.setModel(this.modelo.listarPaciente());
